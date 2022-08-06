@@ -1,7 +1,10 @@
 import 'package:dental_appointment_anuska_fyp/views/components/my_button.dart';
+import 'package:dental_appointment_anuska_fyp/views/pages/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../components/my_field.dart';
+
 
 class RegisterScreen extends StatelessWidget {
   final emailController=TextEditingController();
@@ -80,9 +83,24 @@ class RegisterScreen extends StatelessWidget {
                       var isFormValid=formKey.currentState!.validate();
                       if(isFormValid){
                         var data={"email":emailController.text};
-                        print(data);
+                        Get.to(LoginScreen());
                       }
-                    })
+                    }),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Already have an account?"),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        Get.to(LoginScreen());
+                      },
+                      child: const Text("Login",
+                      style: TextStyle(
+                        color:Colors.blueGrey,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      )),
+                    )
               ],),
             ),
           ),
