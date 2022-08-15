@@ -1,5 +1,6 @@
+import 'package:dental_appointment_anuska_fyp/controller/authentication_controller.dart';
 import 'package:dental_appointment_anuska_fyp/views/pages/home_page.dart';
-import 'package:dental_appointment_anuska_fyp/views/pages/register_screen.dart';
+import 'package:dental_appointment_anuska_fyp/views/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,7 @@ class LoginScreen extends StatelessWidget {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final authentication = Get.put(Authentication());
   LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -58,14 +60,19 @@ class LoginScreen extends StatelessWidget {
                   MyButton(onTap: () {
                     var isFormValid = formKey.currentState!.validate();
                     if (isFormValid) {
-                      if (emailController.text == "admin@gmail.com" &&
-                          passwordController.text == "password") {
-                            Get.to(HomePage());
+                     
+                            var data={
+                              "email":emailController.text,
+                              "password":passwordController.text,
+                            };
+                            authentication.login(data);
+                            // Get.to(HomePage());
                           }
-                          else{
-                            
-                          }
-                    }
+                        // else{
+                        //   printError(u);
+                        // }
+                    
+                     
                   }),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -85,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(RegisterScreen());
+                      Get.to(SignupScreen());
                     },
                     child: const Text("Register",
                         style: TextStyle(

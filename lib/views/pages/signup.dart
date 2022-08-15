@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../components/my_field.dart';
 
 
-class RegisterScreen extends StatelessWidget {
+class SignupScreen extends StatelessWidget {
   final emailController=TextEditingController();
   final passwordController=TextEditingController();
   final confirmPasswordController=TextEditingController();
@@ -14,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
   final nameController=TextEditingController();
   final phoneController=TextEditingController();
   final formKey=GlobalKey<FormState>();
-  RegisterScreen({Key? key}) : super(key: key);
+  SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class RegisterScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Image.asset(
-                    "assets/images/logo.png",
-                    height: 200,
-                    width: 200,
-                  ),
+                  // Image.asset(
+                  //   "assets/images/logo.png",
+                  //   height: 200,
+                  //   width: 200,
+                  // ),
                   const Text("Register a New Account",
                     style: TextStyle(
                       fontSize: 20,

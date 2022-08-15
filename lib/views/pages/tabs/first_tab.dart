@@ -5,8 +5,32 @@ class FirstTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Text('Tab One'),
-    );
+    // return SafeArea(
+    //   child: Container(
+    //     child: const Text('Perfect Dental',
+    //     textAlign:TextAlign.center,
+    //     style: TextStyle(
+    //       fontSize: 25,
+    //       fontWeight: FontWeight.bold,
+    //       color: Colors.black,
+    //       decoration: TextDecoration.underline
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blueGrey,
+            title: const Text ("Perfect Dental",
+            textAlign: TextAlign.center,
+            )
+          ),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                
+             ),
+            ),
+          ),
+        
+        );
+    
+      
   }
 }
