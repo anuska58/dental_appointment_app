@@ -1,4 +1,4 @@
-const baseUrl="http://172.16.0.95/dental_appointment_api_database";
+const baseUrl="http://192.168.1.69/dental_appointment";
 
 const LOGIN_API="$baseUrl/login.php";
-const REGISTER_API="$baseUrl/register.php";
+const REGISTER_API="$baseUrl/signup.php";

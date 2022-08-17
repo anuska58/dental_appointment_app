@@ -33,19 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final authentication = Get.put(Authentication());
   final AuthService authService=AuthService();
 
-  @override
-  void initState(){
-    //TODO: implement initState
-    super.initState();
-    checkifAuthenticated();
-    
-  }
-  checkifAuthenticated() async {
-    var token=await authService.getToken();
-    if (token!= null){
-      Get.offAll(const HomePage());
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
