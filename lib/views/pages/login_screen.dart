@@ -3,20 +3,49 @@ import 'package:dental_appointment_anuska_fyp/views/pages/home_page.dart';
 import 'package:dental_appointment_anuska_fyp/views/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../utils/shared_prefs.dart';
 import '../components/my_button.dart';
 import '../components/my_field.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
+
   final confirmPasswordController = TextEditingController();
+
   final usernameController = TextEditingController();
+
   final nameController = TextEditingController();
+
   final phoneController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
+
   final authentication = Get.put(Authentication());
-  LoginScreen({Key? key}) : super(key: key);
+  final AuthService authService=AuthService();
+
+  @override
+  void initState(){
+    //TODO: implement initState
+    super.initState();
+    checkifAuthenticated();
+    
+  }
+  checkifAuthenticated() async {
+    var token=await authService.getToken();
+    if (token!= null){
+      Get.offAll(const HomePage());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
