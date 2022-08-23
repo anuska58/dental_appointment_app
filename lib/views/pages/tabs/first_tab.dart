@@ -1,9 +1,13 @@
-import 'package:dental_appointment_anuska_fyp/views/pages/login_screen.dart';
+import 'package:dental_appointment_anuska_fyp/controller/authentication_controller.dart';
+import 'package:dental_appointment_anuska_fyp/utils/shared_prefs.dart';
+import 'package:dental_appointment_anuska_fyp/views/pages/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FirstTab extends StatelessWidget {
-  const FirstTab({Key? key}) : super(key: key);
+  final AuthService authService= AuthService();
+  final authentication=Get.find<Authentication>();
+  FirstTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +33,11 @@ class FirstTab extends StatelessWidget {
                 children:  [
                   // const Text("First Tab"),
                   Center(
-                    child: ElevatedButton(onPressed: (){
-                      Get.offAll(const LoginScreen());
-                    },
+                    child: ElevatedButton(onPressed: ()=>logout(),
                      child:
                      const Text("Logout")),
                   ),
                 
-                  // InkWell(
-                  //   onTap: () {
-                  //     Get.offAll(const LoginScreen());
-                  //   },
-                  //   child: const Text("Logout",
-                  //       style: TextStyle(
-                  //         color: Colors.blue,
-                  //         fontSize: 15,
-                  //         fontWeight: FontWeight.bold,
-                  //       )),
-                  // ),
                 ],
 
              ),
@@ -55,7 +46,9 @@ class FirstTab extends StatelessWidget {
           ),
         
         );
-    
-      
+  }
+  logout() async{
+  await authentication.logout();
+  Get.offAll(const Loader());
   }
 }

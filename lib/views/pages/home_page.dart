@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
 
   final _map = <AppTab, TabBuilder>{
     AppTab.home: () {
-      return const FirstTab();
+      return FirstTab();
     },
     AppTab.appointment: () {
       return Column(

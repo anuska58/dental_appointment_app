@@ -1,10 +1,7 @@
-
-
 import 'package:dental_appointment_anuska_fyp/utils/shared_prefs.dart';
 import 'package:dental_appointment_anuska_fyp/views/pages/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'home_page.dart';
 
 class Loader extends StatefulWidget {

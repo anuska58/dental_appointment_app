@@ -14,7 +14,7 @@ class AuthService {
     prefs = await SharedPreferences.getInstance();
     return prefs.getString('token');
   }
-
+  //remove token
   Future<bool> removeToken() async {
     prefs = await SharedPreferences.getInstance();
     return prefs.remove('token');

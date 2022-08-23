@@ -1,8 +1,8 @@
+import 'package:dental_appointment_anuska_fyp/controller/authentication_controller.dart';
 import 'package:dental_appointment_anuska_fyp/views/components/my_button.dart';
 import 'package:dental_appointment_anuska_fyp/views/pages/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../components/my_field.dart';
 
 
@@ -14,6 +14,7 @@ class SignupScreen extends StatelessWidget {
   final nameController=TextEditingController();
   final phoneController=TextEditingController();
   final formKey=GlobalKey<FormState>();
+  final authentication =Get.put(Authentication());
   SignupScreen({Key? key}) : super(key: key);
 
   @override
@@ -28,11 +29,11 @@ class SignupScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  // Image.asset(
-                  //   "assets/images/logo.png",
-                  //   height: 200,
-                  //   width: 200,
-                  // ),
+                  Image.asset(
+                    "assets/images/logo.png",
+                    height: 200,
+                    width: 200,
+                  ),
                   const Text("Register a New Account",
                     style: TextStyle(
                       fontSize: 20,
@@ -82,8 +83,15 @@ class SignupScreen extends StatelessWidget {
                     MyButton(onTap: (){
                       var isFormValid=formKey.currentState!.validate();
                       if(isFormValid){
-                        var data={"email":emailController.text};
-                        Get.to(LoginScreen());
+                        var data={
+                          "email":emailController.text,
+                          "password":passwordController.text,
+                          "username":usernameController.text,
+                          "name":nameController.text,
+                          "phone":phoneController.text,
+                          
+                          };
+                          authentication.signup(data);
                       }
                     }),
                     const Padding(
@@ -92,7 +100,7 @@ class SignupScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: (){
-                        Get.to(LoginScreen());
+                        Get.to(const LoginScreen());
                       },
                       child: const Text("Login",
                       style: TextStyle(

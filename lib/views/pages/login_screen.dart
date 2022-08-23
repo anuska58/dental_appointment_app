@@ -1,5 +1,4 @@
 import 'package:dental_appointment_anuska_fyp/controller/authentication_controller.dart';
-import 'package:dental_appointment_anuska_fyp/views/pages/home_page.dart';
 import 'package:dental_appointment_anuska_fyp/views/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,19 +19,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final passwordController = TextEditingController();
 
-  final confirmPasswordController = TextEditingController();
-
-  final usernameController = TextEditingController();
-
-  final nameController = TextEditingController();
-
-  final phoneController = TextEditingController();
-
   final formKey = GlobalKey<FormState>();
 
-  final authentication = Get.put(Authentication());
-  final AuthService authService=AuthService();
-
+  final authentication = Get.find<Authentication>();
+  
   
 
   @override
@@ -108,9 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.black)),
                   ),
                   InkWell(
-                    onTap: () {
-                      Get.to(SignupScreen());
-                    },
+                    onTap: () => Get.to(SignupScreen()),
                     child: const Text("Register",
                         style: TextStyle(
                           color: Colors.blue,
